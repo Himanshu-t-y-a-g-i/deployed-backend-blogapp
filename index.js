@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     res.send("Server is up and running");
 })
 
-app.use("/api/", userRoutes);
+app.use("/api", userRoutes);
 
 app.use(authentication);
 
