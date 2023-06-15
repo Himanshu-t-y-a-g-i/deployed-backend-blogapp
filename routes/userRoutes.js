@@ -39,7 +39,13 @@ userRoutes.post("/login", async (req, res) => {
                 if (!verify) {
                     res.status(400).send({ msg: "incorrect password" });
                 } else {
-                    res.status(200).send({ msg: "user logged in", token: jwt.sign({ uid: emailCheck._id }, "blogapp") });
+                    const obj = {
+                        msg: "user logged in",
+                        token: jwt.sign({ uid: emailCheck._id }, "blogapp"),
+                        username: emailCheck.username,
+                        avatar: emailCheck.avatar
+                    };
+                    res.status(200).send(obj);
                 }
             }
         } catch (e) {
